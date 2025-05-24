@@ -1,0 +1,109 @@
+---
+title: "Functions"
+author: "djani"
+date: today
+format:
+  html:
+    theme: cosmo               # Use a clean Bootstrap theme
+    toc: true                  # Table of contents on the side
+    toc-depth: 2               # Up to level 2 headers in TOC
+    number-sections: false      # Number section headings
+    code-fold: false           # Show all code by default
+    code-line-numbers: false   # Don't show line numbers
+    highlight-style: github    # Syntax highlighting style
+
+execute:
+  echo: true                   # Show code chunks
+  results: 'markup'            # Inline output next to code
+  collapse: true               # Collapse output into the same block as code
+  comment: "#>"                # Prefix for output lines (like in knitr)
+  warning: false               # Suppress warnings in output
+  message: false               # Suppress messages (e.g., from package loading)
+
+editor: visual                 # Use Quarto visual editor by default
+lang: en                       # Set the document language
+fontsize: 1em     
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  # cache = TRUE,
+  fig.retina = 2,
+  fig.width = 6,
+  fig.asp = 2 / 3,
+  fig.show = "hold"
+)
+```
+
+## 🧠 R is a languages
+
+R is not just a tool—it's a **language**. Just as any language it has:
+
+-   **Vocabulary** (functions, objects)
+-   **Syntax** (rules of structure)
+-   **Grammar** (how elements combine)
+-   **Semantics** (meaning)
+
+## Function = Verbs
+
+Functions perform actions.
+
+Here is how you can write your own function. You don't need to but it is good to know what is happening behind the scenes.
+
+```{r}
+# x hoch y
+power <- function(x, y) {
+  result <- x^y
+  return(result)
+}
+
+x <- 1:4
+# Call the function
+power(x, 2)
+power(x, 3)
+```
+
+This is a general form a function. Commonly, the first argument (`x`) is the most important.
+
+![](function.png){width="463"}
+
+But, functions can do anything you want and there are functions for almost anything:
+
+```{r}
+# bc why not
+voice <- function(x){
+  if (x == "cat") {
+    say <- "miau"
+  } else if (x == "dog"){
+    say <- "wof wof"
+  } else {
+    say <- "???"
+  }
+  return(say)
+}
+
+nelly <- "cat"
+voice(nelly)
+```
+
+```{r, echo=FALSE}
+help("mean")
+```
+
+```{r, echo = FALSE, eval=FALSE}
+helpfile <- utils:::.getHelpFile(help("mean"))
+outfile <- tempfile(fileext = ".html")
+tools:::Rd2HTML(helpfile, out =outfile)
+rawHTML <- paste(readLines(outfile), collapse="\n")
+knitr::asis_output(htmltools::htmlPreserve(rawHTML))
+
+# function definition
+# mean(x, trim = 0, na.rm = FALSE, ...)
+# # pipe syntax
+# result <- 
+#   input |> 
+#   function_name()
+
+```
