@@ -92,7 +92,7 @@ c
 length(a) == length(c)
 ```
 
-![](transformerreducer.png){width="339"}
+![](transformerreducer.png){width="296"}
 
 ## 🔤 Arguments
 
