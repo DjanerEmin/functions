@@ -151,6 +151,9 @@ voice <- function(x){
 nelly <- "cat"
 voice(nelly)
 
+voice("dog")
+voice("kapibara")
+
 # see you wednesday :)
 ```
 
