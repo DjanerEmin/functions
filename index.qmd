@@ -48,7 +48,57 @@ R is not just a tool—it's a **language**. Just as any language it has:
 
 ## Function = Verbs
 
-Functions perform actions.
+Functions perform actions. Most functions expect an input (arguments) and `return` a result. Think of functions as transformer, they take something in and transform it into something else.
+
+![](meatgrinder2.png){width="320"}
+
+Here is a more formal representation:
+
+![](function2.png){width="262"}
+
+Does this remind you of something? The pipe synthax looks very similar. In fact, we can use the rechtsrum (`->`) assignment operator to write an expression like this `a |> f() -> b`
+
+```{r}
+# example 
+a <- 1:5
+
+a |> mean() -> b
+b
+# yes you can use `->` assignment too :) 
+```
+
+As I said, functions are transformers, they transform the input (`a`) into something else (`b`). Strictly speaking, transformers will keep the length of `a` and `b` the same (`length(a) == length(b)`). Reducers on the other hand will squish (reduce) the length down to (normally) 1 element. Summary functions (`sum()`, `min()`, `max()`, `sd()` ) are reducers.
+
+```{r}
+a <- 1:5
+
+# transformer: a hoch 2
+b <- a^2
+b
+length(a) == length(b)
+
+# reducer
+c <- max(a)
+c
+length(a) == length(c)
+```
+
+![](transformerreducer.png){width="339"}
+
+## 🔤 Arguments
+
+The general form of a function consist of a `function_name(arguments)` Commonly, the first argument (often named `x`) is the most important and is the data (`vector`) which will be transformed. and the other arguments describe "how" it will be transformed.
+
+![](function.png){width="413"}
+
+```{r}
+a <- c(1:100, NA)
+tail(a)
+sd(a)
+sd(a, na.rm = TRUE)
+```
+
+## 👷🏼‍♀️Under the hood
 
 Here is how you can write your own function. You don't need to but it is good to know what is happening behind the scenes.
 
@@ -64,10 +114,6 @@ x <- 1:4
 power(x, 2)
 power(x, 3)
 ```
-
-This is a general form a function. Commonly, the first argument (`x`) is the most important.
-
-![](function.png){width="463"}
 
 But, functions can do anything you want and there are functions for almost anything:
 
