@@ -46,9 +46,11 @@ R is not just a tool—it's a **language**. Just as any language it has:
 -   **Grammar** (how elements combine)
 -   **Semantics** (meaning)
 
-## Function = Verbs
+Lets learn more about the grammar of functions.
 
-Functions perform actions. Most functions expect an input (arguments) and `return` a result. Think of functions as transformer, they take something in and transform it into something else.
+## 🗣️ Functions = Verbs
+
+Functions perform actions. Most functions expect input (arguments) and `return` a result. Think of functions as transformer, they take something in and transform it into something else.
 
 ![](meatgrinder2.png){width="320"}
 
@@ -56,7 +58,7 @@ Here is a more formal representation:
 
 ![](function2.png){width="262"}
 
-Does this remind you of something? The pipe synthax looks very similar. In fact, we can use the rechtsrum (`->`) assignment operator to write an expression like this `a |> f() -> b`
+Does this remind you of something? The pipe synthax looks very similar. In fact, we can use a rechtsrum (`->`) assignment operator to write an expression exactly like this: `a |> f() -> b`
 
 ```{r}
 # example 
@@ -65,11 +67,18 @@ a <- 1:5
 a |> mean() -> b
 b
 # yes you can use `->` assignment too :) 
+
+# same as 
+b <- mean(a)
+b
 ```
 
-As I said, functions are transformers, they transform the input (`a`) into something else (`b`). Strictly speaking, transformers will keep the length of `a` and `b` the same (`length(a) == length(b)`). Reducers on the other hand will squish (reduce) the length down to (normally) 1 element. Summary functions (`sum()`, `min()`, `max()`, `sd()` ) are reducers.
+## 🤖 Transformers vs. Reducers
+
+As I said, functions are transformers, they transform the input vector (`a`) into something else (`b`). Strictly speaking, *transformers* will keep the length of vectors `a` and `b` the same (`length(a) == length(b)`). *Reducers* on the other hand will squish (reduce) the length of the input vector down to (normally) 1 element. For example, summary functions like `sum()`, `min()`, `max()`, `sd()` are reducers. They reduce the information from the vector to a single value.
 
 ```{r}
+# example
 a <- 1:5
 
 # transformer: a hoch 2
@@ -87,15 +96,24 @@ length(a) == length(c)
 
 ## 🔤 Arguments
 
-The general form of a function consist of a `function_name(arguments)` Commonly, the first argument (often named `x`) is the most important and is the data (`vector`) which will be transformed. and the other arguments describe "how" it will be transformed.
+The general form of a function consist of `function_name(arguments)` Commonly, the first argument (often named `x`) is the most important and is the data (`vector`) which will be transformed. and the other arguments describe "how" it will be transformed.
 
 ![](function.png){width="413"}
 
 ```{r}
-a <- c(1:100, NA)
+# vector with missing values (NA = not available)
+a <- c(1:100, NA, NA, NA)
 tail(a)
+
+# NA will always propagate forward !!!
 sd(a)
+
+# remove NA
 sd(a, na.rm = TRUE)
+
+# use 
+help(mean)
+# to find out about all available options in a function
 ```
 
 ## 👷🏼‍♀️Under the hood
@@ -132,6 +150,8 @@ voice <- function(x){
 
 nelly <- "cat"
 voice(nelly)
+
+# see you wednesday :)
 ```
 
 ```{r, echo=FALSE}
