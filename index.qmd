@@ -152,10 +152,10 @@ nelly <- "cat"
 voice(nelly)
 
 voice("dog")
-voice("kapibara")
-
-# see you wednesday :)
+voice("capybara")
 ```
+
+![](capybara.png){width="288"}
 
 ```{r, echo=FALSE}
 help("mean")
