@@ -150,12 +150,11 @@ voice <- function(x){
 
 nelly <- "cat"
 voice(nelly)
-
 voice("dog")
 voice("capybara")
 ```
 
-![](capybara.png){width="288"}
+![](capybara.png){width="402"}
 
 ```{r, echo=FALSE}
 help("mean")
